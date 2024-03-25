@@ -25,84 +25,110 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 - Se debe configurar el proyecto para que inicie con las dos soluciones
 [image](https://github.com/JESoria/AtlantidaBank/assets/45598614/22493512-ddbc-42d7-856b-f967b9e1cce3)
 
+## Pasos para ejecutar proyecto
+
+1. Ejecutar Script de base de datos o Backup
+2. Modificar appsettings.json con la cadena de conexion
+3. Ejecutar ambos proyectos, para ello se debe configurar la solución dando clic derecho -> Propiedades -> Proyectos de inicio y colocar ambos en "Iniciar"
+4. Ejecutar proyecto
+5. En el login colocar las credenciales usuario: **jsoria** y clave: **admin**
+6. Una vez dentro del sistema puedes hacer testing segun la prueba PDF
+
 ## AtlantidaBankAPI:
 
 ## API endpoints:
 
-```json
-Token
-POST
+
+### Token
+Metodo: POST
 Ruta: /api/Token/GetToken
 Request body
-
+```json
 {
   "username": "string",
   "password": "string"
 }
-
-CreditCard
-POST
+```
+### CreditCard
+Metodo: POST
 Ruta: /api/CreditCard/GetBonifiableInterest
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo: POST
 Ruta: /api/CreditCard/GetCalculateMinimumPayment
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo: POST
 Ruta: /api/CreditCard/GetCurrentPurchases
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo: POST
 Ruta: /api/CreditCard/GetAccount
 Request body
+```json
 {
   "userId": "string",
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo: POST
 Ruta: /api/CreditCard/GetTotalAmountToPay
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo: POST
 Ruta: /api/CreditCard/GetTotalCashAmountToPayWithInterest
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo: POST
 Ruta: /api/CreditCard/GetTotalPurchases
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-POST
+Metodo:POST
 Ruta: /api/CreditCard/GetAllTransactionsForCreditCard
 Request body
+```json
 {
   "crediCardId": "string"
 }
+```
 
-Shopping
+### Shopping
 
-POST
+Metodo:POST
 Ruta: /api/Shopping/AddPurchase
 Request body
+```json
 {
   "crediCardId": "string",
   "transactionDate": "string",
@@ -110,10 +136,12 @@ Request body
   "amount": "string",
   "ipAddress": "string"
 }
+```
 
-POST
+Metodo:POST
 Ruta: /api/Shopping/MakePayment
 Request body
+```json
 {
   "crediCardId": "string",
   "transactionDate": "string",
