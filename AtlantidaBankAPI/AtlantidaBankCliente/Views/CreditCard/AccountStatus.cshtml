@@ -1,0 +1,256 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout _Authenticated.cshtml";
+}
+
+@section Styles {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+}
+
+<!-- Default box -->
+<div class="card card-primary card-outline mt-2" id="content">
+    <div class="card-body">
+        <div class="row">
+            <div class="card col-12">
+                <div class="card-header">
+                    <h4>Datos Generales de la Cuenta</h4>
+                    <button class="btn btn-secondary" id="exportPdfButton">Exportar a PDF</button>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>Titular: @ViewBag.AccountStatementDetail.CardHolder</p>
+                        <p>Numero de Tarjeta: @ViewBag.AccountStatementDetail.CardNumber</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-success"><i class="fas fa-dollar-sign"></i></span>
+                    <h5 class="description-header">$@ViewBag.AccountStatementDetail.CurrentBalance</h5>
+                    <span class="description-text">Saldo actual</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-success"><i class="fas fa-money-check"></i></span>
+                    <h5 class="description-header">$@ViewBag.AccountStatementDetail.CreditLimit</h5>
+                    <span class="description-text">Limite de Credito</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-success"><i class="fas fa-chart-line"></i></span>
+                    <h5 class="description-header">$@ViewBag.AccountStatementDetail.BalanceAvailable</h5>
+                    <span class="description-text">Saldo disponible</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+        </div>
+
+        <hr />
+        <!-- Second-block -->
+        <div class="row">
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-info"><i class="fas fa-money-check-alt"></i></span>
+                    <h5 class="description-header">$@ViewBag.TotalPurchases.TotalCurrentMonthPurchases</h5>
+                    <span class="description-text">Compras del mes actual</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-info"><i class="fas fa-money-check-alt"></i></span>
+                    <h5 class="description-header">$@ViewBag.TotalPurchases.TotalPreviousMonthPurchases</h5>
+                    <span class="description-text">Compras del mes anterior</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-info"><i class="fas fa-chart-line"></i></span>
+                    <h5 class="description-header">$@ViewBag.BonifiableInterest</h5>
+                    <span class="description-text">Interés Bonificable</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+        </div>
+        <hr />
+        <!-- Third-block -->
+        <div class="row">
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-warning"><i class="fas fa-shopping-cart"></i></span>
+                    <h5 class="description-header">$@ViewBag.MinimumPayment</h5>
+                    <span class="description-text">Cuota Mínima a Pagar</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-warning"><i class="fas fa-shopping-cart"></i></span>
+                    <h5 class="description-header">$@ViewBag.TotalAmountToPay</h5>
+                    <span class="description-text">Monto total a Pagar</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 col-6">
+                <div class="description-block border-right">
+                    <span class="description-percentage text-warning"><i class="fas fa-chart-line"></i></span>
+                    <h5 class="description-header">$@ViewBag.TotalAmountToPayWithInterest</h5>
+                    <span class="description-text">Monto total de Contado con Intereses</span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+        </div>
+
+        <!-- Lista de compras del mes -->
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Compras realizadas con la tarjeta de crédito en este mes</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="PurchasesTable" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Fecha de Transacción</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var purchase in ViewBag.ListCurrentMonthPurchases)
+                                {
+                                    <tr>
+                                        <td>@purchase.TransactionDate.ToShortDateString()</td>
+                                        <td>@purchase.Description</td>
+                                        <td>@purchase.Amount.ToString("C")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Fecha de Transacción</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            </div>
+            <!-- /.col -->
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+@section Scripts {
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/plugins/jszip/jszip.min.js"></script>
+    <script src="~/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#PurchasesTable").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
+                ],
+                "processing": true,
+                "responsive": true,
+                "order": [[0, "asc"]],
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 },
+                ],
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+                "pageLength": 10,
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+            });
+
+        });
+
+    </script>
+
+    <script>
+        document.getElementById('exportPdfButton').addEventListener('click', function () {
+            // Capturar el contenido HTML que deseas convertir en PDF
+            var content = document.getElementById('content');
+
+            // Obtener la fecha y hora actuales
+            var dateTime = new Date().toISOString().replace(/[-:]/g, "").replace("T", "_").split(".")[0]; // Formato: YYYYMMDD_HHMMSS
+
+            // Nombre del archivo PDF con fecha y hora
+            var fileName = 'Estado_de_Cuenta_' + dateTime + '.pdf';
+
+            html2canvas(content).then(function (canvas) {
+                var imgData = canvas.toDataURL('image/png');
+
+                var doc = new jsPDF();
+
+                doc.addImage(imgData, 'PNG', 10, 10, 190, 0);
+
+                // Guardar el PDF con el nombre actualizado
+                doc.save(fileName);
+            });
+        });
+    </script>
+}

@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout _Authenticated.cshtml";
+}
+
+<!-- Default box -->
+<div class="card card-solid mt-2">
+    <div class="card-body">
+        <div class="row">
+
+            <div class="error-content">
+                <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Something went wrong.</h3>
+
+                <p>
+                    <strong>@ViewBag.ErrorMessage</strong>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->

@@ -1,0 +1,151 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout _Authenticated.cshtml";
+}
+
+@section Styles {
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+}
+
+<!-- Default box -->
+<div class="card card-primary card-outline mt-2" id="content">
+    <div class="card-body">
+        
+        <!-- Lista de compras del mes -->
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="alert alert-info" role="alert">
+                        <p>Te presentamos a continuación un resumen detallado de tus transacciones recientes. En esta tabla, encontrarás información sobre las fechas de transacción, descripciones de las compras o pagos realizados, los montos correspondientes y el tipo de transacción (compra o pago). Esperamos que esta información te sea útil para llevar un mejor control de tus finanzas. ¡Gracias por confiar en nosotros!</p>
+                    </div>
+
+                    <div class="card-header">
+                        <h3 class="card-title">Historial de Transacciones del mes</h3>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="PurchasesTable" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Fecha de Transacción</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                    <th>Tipo de Transacción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var transaction in ViewBag.AllTransactions)
+                                {
+                                    <tr>
+                                        <td>@transaction.TransactionDate.ToShortDateString()</td>
+                                        <td>@transaction.Description</td>
+                                        <td>@transaction.Amount.ToString("C")</td>
+                                        <td>
+                                            @if (transaction.TransactionType == "C")
+                                            {
+                                                <span>Compra</span>
+                                            }
+                                            else if (transaction.TransactionType == "P")
+                                            {
+                                                <span>Pago</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@transaction.TransactionType</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Fecha de Transacción</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                    <th>Tipo de Transacción</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            </div>
+            <!-- /.col -->
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+@section Scripts {
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/plugins/jszip/jszip.min.js"></script>
+    <script src="~/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#PurchasesTable").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
+                ],
+                "processing": true,
+                "responsive": true,
+                "order": [[0, "asc"]],
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 },
+                ],
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
+                "DisplayLength": 10,
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+            });
+
+        });
+
+    </script>
+}

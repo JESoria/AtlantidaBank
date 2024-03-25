@@ -1,0 +1,69 @@
+﻿@model AtlantidaBankCliente.Models.ViewModels.LoginViewModel
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+}
+<!-- /.login-logo -->
+<div class="card card-outline card-primary">
+
+    <div class="card-header text-center">
+        <h2>Banco Atlántida</h2>
+        <img src="~/dist/img/logo.png" alt="Logo" width="25%" class="img-circle elevation-1">
+    </div>
+    <div class="card-body">
+
+        <form asp-action="Index" asp-controller="Home" method="post">
+  
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Usuario" asp-for="Username">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user-alt"></span>
+                    </div>
+                </div>
+            </div>
+            <span asp-validation-for="Username" class="text-danger"></span>
+
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Contraseña" asp-for="Password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+
+
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            if ('@TempData["Message"]' !== '') {
+                toastr.error('@TempData["Message"]');
+                // Limpiar los campos del formulario
+                $('input[type="text"]').val('');
+            }
+        });
+
+    </script>
+}

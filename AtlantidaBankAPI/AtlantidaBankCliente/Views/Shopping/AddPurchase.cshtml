@@ -1,0 +1,112 @@
+﻿@model AtlantidaBankCliente.Models.ViewModels.TransactionViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout _Authenticated.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+}
+<!-- Default box -->
+<div class="card card-primary card-outline mt-2" id="content">
+    <div class="card-body">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Registrar una compra</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <div class="alert alert-info" role="alert">
+                    Estimado usuario, por favor complete los campos con la siguiente información:
+                    <ul>
+                        <li>Fecha de la transacción: Ingresa la fecha en la que realizaste la compra.</li>
+                        <li>Monto de la compra: Aquí debes ingresar el monto total de tu compra.</li>
+                        <li>Descripción de la compra: Proporciona una breve descripción de lo que compraste.</li>
+                    </ul>
+                </div>
+
+                <form asp-action="AddPurchase" asp-controller="Shopping" method="post">
+                    <input type="hidden" asp-for="Message" value="message"/>
+                    <input type="hidden" asp-for="CrediCardId" value="0" />
+                    <input type="hidden" asp-for="IPAddress" value="ip" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="TransactionDate" class="control-label">Fecha de Transacción</label>
+                            <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                                <input type="text" asp-for="TransactionDate" class="form-control datetimepicker-input" data-target="#reservationdatetime" />
+                                <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <span asp-validation-for="TransactionDate" class="text-danger"></span>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <label asp-for="Amount" class="control-label">Monto</label>
+                            <div class="input-group">
+                                <input asp-for="Amount" class="form-control" type="number" step="0.01" min="0.01" />
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label asp-for="Description" class="control-label">Descripción</label>
+                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <div class="row mt-4">
+                        <!-- /.col -->
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+ 
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+@section Scripts {
+
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+            if ('@TempData["Message"]' !== '') {
+                toastr.success('@TempData["Message"]');
+                // Limpiar los campos del formulario
+                $('input[type="text"]').val('');
+                $('input[type="number"]').val('');
+                $('textarea').val('');
+            }
+        });
+
+    </script>
+}
