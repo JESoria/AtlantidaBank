@@ -1,6 +1,8 @@
 # AtlantidaBank
 Este repositorio contiene una prueba realizada para el Banco Atlántida, implementada con tecnologías de desarrollo de última generación en el ecosistema .NET. Consta de dos proyectos: ASP.NET CORE Web API con .NET 6 (Servicio) y ASP.NET CORE con .NET 6 MVC (Cliente)
 
+## Encuentra mi perfil [linkedin](https://www.linkedin.com/in/jos%C3%A9-eduardo-guevara-soria-7a5956157/).
+
 ## Tecnologías Utilizadas:
 - ASP.NET CORE Web API con .NET 6 (Servicio): la API proporciona la funcionalidad principal para interactuar con los servicios del Banco Atlántida
 - ASP.NET CORE con .NET 6 MVC (Cliente) : La interfaz de usuario del cliente el cual consume la API
