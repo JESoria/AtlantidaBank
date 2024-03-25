@@ -13,6 +13,7 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 - Proyecto .Zip
 - Proyecto
 - AtlantidaBankAPI.postman_collection
+- Documentación del proyecto
 
 ## Consideraciones para ejecutar el proyecto
 
