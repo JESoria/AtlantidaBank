@@ -12,6 +12,7 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 - Backup de la base de datos
 - Proyecto .Zip
 - Proyecto
+- AtlantidaBankAPI.postman_collection
 
 ## Consideraciones para ejecutar el proyecto
 
@@ -38,6 +39,10 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 
 ## API endpoints:
 
+### Consideraciones para hacer uso del API
+- Utilizando POSTMAN se debe importar la coleccion AtlantidaBankAPI.postman_collection
+- Se debe iniciar ejecutando el EndPont de Token y copiar el token que devuelva la API (Previo a haber ejecutado la BD)
+- Cambiar el Token en Authorization de cada Endpoint a ejecutar esto debido a la caducida el cual es de 60 minutos
 
 ### Token
 Metodo: POST
