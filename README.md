@@ -9,10 +9,12 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 
 ## API endpoints:
 
+```json
 ### Token
 POST
 Ruta: /api/Token/GetToken
 Request body
+
 {
   "username": "string",
   "password": "string"
@@ -99,3 +101,4 @@ Request body
   "amount": "string",
   "ipAddress": "string"
 }
+```
