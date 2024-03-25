@@ -16,7 +16,9 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 
 ## Consideraciones para ejecutar el proyecto
 
-- Se debe modificar el archivo appsettings.json el bloque de conexion a la base de datos
+> [!CAUTION]
+> Se debe modificar el archivo appsettings.json el bloque de conexion a la base de datos.
+
 ```json
 "ConnectionStrings": {
   "AtlantidaBankConnection": "Server=localhost; Database=AtlantidaBank; User Id=sa; Password=[clave]; TrustServerCertificate=True"
@@ -40,6 +42,7 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 ## API endpoints:
 
 ### Consideraciones para hacer uso del API
+
 - Utilizando POSTMAN se debe importar la coleccion AtlantidaBankAPI.postman_collection
 - Se debe iniciar ejecutando el EndPont de Token y copiar el token que devuelva la API (Previo a haber ejecutado la BD)
 
