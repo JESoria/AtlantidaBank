@@ -10,7 +10,7 @@ Este repositorio contiene una prueba realizada para el Banco Atlántida, impleme
 ## API endpoints:
 
 ```json
-### Token
+Token
 POST
 Ruta: /api/Token/GetToken
 Request body
@@ -20,7 +20,7 @@ Request body
   "password": "string"
 }
 
-### CreditCard
+CreditCard
 POST
 Ruta: /api/CreditCard/GetBonifiableInterest
 Request body
@@ -78,7 +78,7 @@ Request body
   "crediCardId": "string"
 }
 
-### Shopping
+Shopping
 
 POST
 Ruta: /api/Shopping/AddPurchase
