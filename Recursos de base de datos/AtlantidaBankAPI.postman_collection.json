@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "a7092eb4-0ed1-45ae-a5e0-493ba0ba3e00",
+		"name": "AtlantidaBankAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12283143"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"jsoria\",\r\n  \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/Token/GetToken",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"Token",
+						"GetToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBonifiableInterest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetBonifiableInterest",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetBonifiableInterest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCalculateMinimumPayment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetCalculateMinimumPayment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetCalculateMinimumPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCurrentPurchases",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetCurrentPurchases",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetCurrentPurchases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAccount",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"1\",\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetAccount",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTotalAmountToPay",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetTotalAmountToPay",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetTotalAmountToPay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTotalPurchases",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetTotalPurchases",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetTotalPurchases"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllTransactionsForCreditCard",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/CreditCard/GetAllTransactionsForCreditCard",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"CreditCard",
+						"GetAllTransactionsForCreditCard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddPurchase",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\",\r\n  \"transactionDate\": \"2024-03-25\",\r\n  \"description\": \"Prueba de compra\",\r\n  \"amount\": \"15.50\",\r\n  \"ipAddress\": \"190.150.219.178\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/Shopping/AddPurchase",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"Shopping",
+						"AddPurchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MakePayment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Impzb3JpYSIsImV4cCI6MTcxMTM5NzIwMX0.351KzFr66dbvHGAL0Kf7q2k8RZuPSZzGr9D1I2jmjNU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"crediCardId\": \"1\",\r\n  \"transactionDate\": \"2024-03-25\",\r\n  \"description\": \"Prueba de pago\",\r\n  \"amount\": \"25.50\",\r\n  \"ipAddress\": \"190.150.219.178\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7147/api/Shopping/MakePayment",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7147",
+					"path": [
+						"api",
+						"Shopping",
+						"MakePayment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
